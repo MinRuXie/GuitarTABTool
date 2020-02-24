@@ -1,0 +1,140 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(41, 41, 41);
+}
+
+.container-fluid {
+    padding: 0;
+    height: 100%;
+}
+
+.text {
+    background: rgb(41, 41, 41);
+    height: 65%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 5px 10px;
+    font-size: 80%;
+    width: 90%;
+    float: left;
+    transition: 0.3s;
+}
+.text.full {
+    width: calc(100% - 18px);
+}
+
+.text .title {
+    width: 100%;
+    display: inline-block; /* 吃自己的現在的長寬 */
+    padding: 5px;
+    font-size: 15px;
+    color: #FFF;
+    letter-spacing: 2px;
+}
+
+.toolbox {
+    background-color: rgb(50, 50, 50);
+    height: 65%;
+    width: 10%;
+    float: left;
+    padding: 15px 5px 5px 18px;
+    /* overflow-y: auto; */
+    /* overflow-x: hidden; */
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s;
+}
+.toolbox #toolbox-btn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(50, 50, 50);
+    width: 18px;
+    height: 100%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.toolbox #toolbox-btn:hover {
+    opacity: 0.6;
+}
+.toolbox #toolbox-btn::before {
+    content: '▶';
+    display: inline-block;
+    height: 40px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 10;
+    transition: 0.3s;
+}
+.toolbox.closed {
+    transform: translateX(calc(100% - 18px));
+}
+.toolbox.closed #toolbox-btn::before {
+    transform: rotate(180deg);
+    transition-delay: 0.2s
+}
+.toolbox .toolbutton {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #FFF;
+    text-align: center;
+    padding: 7px 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+.toolbox .toolbutton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.toolbox .toolbutton.selected {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.guitar {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 35%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    background: rgb(47, 38, 34);
+}
+
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+}
+
+.loading img {
+    position: absolute;
+    width: 10%;
+    top: 40%;
+    left:50%;
+    transform: translateY(-50%); /* 扣掉自己的 50% 高度 */
+    transform: translateX(-50%); /* 扣掉自己的 50% 高度 */
+}
+
+* {
+    /* 不能反白 */
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+	font-family: 'Galindo', 'Noto Sans TC', cursive;
+}
