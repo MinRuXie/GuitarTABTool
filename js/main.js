@@ -28,6 +28,14 @@ $(function(){
     }, 1000);
 
 
+    // 音符
+    let chord_1 = []; // 第一弦
+    let chord_2 = []; // 第二弦
+    let chord_3 = []; // 第三弦
+    let chord_4 = []; // 第四弦
+    let chord_5 = []; // 第五弦
+    let chord_6 = []; // 第六弦
+
     // 變數準備
     let $guitar = $('.guitar');
     let $text = $('.text');
@@ -46,9 +54,10 @@ $(function(){
     let grid_count = 22; // 空弦 + 21 格
     let grid = `<div class="grid"></div>`;
 
-    //-------------------
+    // 軌道
+    let line = `<div class="line"></div>`
+
     // 建立琴弦
-    //-------------------
     for (let i=0; i <= chord_count - 1; i++) {
         if (i < 3) {
             $guitar.append(chord_treble);
@@ -57,14 +66,31 @@ $(function(){
         }
     }
 
-    //-------------------
     // 建立格子
-    //-------------------
     $('.chord').each(function(index){
         for (let i=0; i <= grid_count - 1; i++) {
             $(this).append(grid);
         }
     });
+
+    // 建立軌道
+    addLine();
+
+
+    //-------------------
+    // 新增軌道
+    //-------------------
+    function addLine() {
+        if($text_tabs.find('.line').length >= 1){
+            // 檢查最後一行軌道有無音符
+            if($text_tabs.find('.line').last().children().length !== 0){
+                $text_tabs.append(line);
+            }
+        }else{
+            $text_tabs.append(line);
+        }
+    }
+    
 
 
     //-------------------
@@ -157,6 +183,14 @@ $(function(){
     // 電腦
     //-------------------
     }else{
+        $('.line').each(function(index){
+            $('.grid').each(function(index2){
+                $(this).on('mousedown', function(event){
+                    console.log('hi');
+                });
+            });
+        });
+        
         $('.toolbutton').each(function(index){
             $(this).on('mousedown', function(event){
                 $(this).addClass('selected');

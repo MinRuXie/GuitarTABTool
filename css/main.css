@@ -24,7 +24,11 @@ html, body {
 .text.full {
     width: calc(100% - 18px);
 }
-
+.text .line {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    height: 50px;
+}
 .text .title {
     width: 100%;
     display: inline-block; /* 吃自己的現在的長寬 */
@@ -108,7 +112,7 @@ html, body {
     height: 35%;
     overflow-y: hidden;
     overflow-x: scroll;
-    background: rgb(47, 38, 34);
+    background-color: #000;
 
     /* 消除子元素 inlic-block 的上下間隔 */
     line-height: 0;
@@ -139,17 +143,16 @@ html, body {
 .guitar .chord:nth-of-type(5)::before { height: 4px; }
 .guitar .chord:nth-of-type(6)::before { height: 5px; }
 
-.guitar .chord.bass::before {
-    background-color: #999;
-}
-.guitar .chord.treble::before {
-    background-color: rgba(98, 85, 80, 0.9);
-}
+.guitar .chord.bass::before { background-color: #999; }
+.guitar .chord.treble::before { background-color: rgba(98, 85, 80); }
 
 .guitar .chord .grid {
     border-left: 5px solid rgba(255, 255, 255, 0.3);
     height: 100%;
     display: inline-block;
+    background-color: rgb(47, 38, 34);
+    transition: 0.3s;
+    position: relative;
 }
 .guitar .chord .grid:nth-of-type(1) { width: 40px; background-color: rgba(255, 255, 255, 0.8); }
 .guitar .chord .grid:nth-of-type(2) { width: 150px; }
@@ -173,6 +176,24 @@ html, body {
 .guitar .chord .grid:nth-of-type(20) { width: 60px; }
 .guitar .chord .grid:nth-of-type(21) { width: 60px; }
 .guitar .chord .grid:nth-of-type(22) { width: 60px; }
+
+.guitar .chord .grid:hover {
+    opacity: 0.8;
+}
+
+/* .guitar .chord .grid::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFF;
+    border-radius: 100px;
+} */
+
 
 .loading {
     position: absolute;
