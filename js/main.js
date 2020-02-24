@@ -37,6 +37,36 @@ $(function(){
 
     $('.toolbutton').eq(3).css('display', 'none'); // 開啟
 
+    // 弦
+    let chord_count = 6;
+    let chord_bass = `<div class="chord bass"></div>`; // 低音弦
+    let chord_treble = `<div class="chord treble"></div>`; // 高音弦
+
+    // 格子
+    let grid_count = 22; // 空弦 + 21 格
+    let grid = `<div class="grid"></div>`;
+
+    //-------------------
+    // 建立琴弦
+    //-------------------
+    for (let i=0; i <= chord_count - 1; i++) {
+        if (i < 3) {
+            $guitar.append(chord_treble);
+        }else {
+            $guitar.append(chord_bass);
+        }
+    }
+
+    //-------------------
+    // 建立格子
+    //-------------------
+    $('.chord').each(function(index){
+        for (let i=0; i <= grid_count - 1; i++) {
+            $(this).append(grid);
+        }
+    });
+
+
     //-------------------
     // 吉他面板控制
     //-------------------
