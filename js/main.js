@@ -77,7 +77,7 @@ $(function(){
     $('.chord').each(function(index){
         for (let i=0; i <= grid_count - 1; i++) {
             let grid = `
-                <div class="grid" value="${notes_array[index][i]}">
+                <div class="grid" data-chord="${index+1}" data-grid="${i}" value="${notes_array[index][i]}">
                     <span>${notes_array[index][i]}</span>
                 </div>`;
             $(this).append(grid);
@@ -102,7 +102,10 @@ $(function(){
         }
     }
     
-
+    //-------------------
+    // 新增音符
+    //-------------------
+    
 
     //-------------------
     // 吉他面板控制
