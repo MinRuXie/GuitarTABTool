@@ -127,6 +127,7 @@ html, body {
 
     height: calc(100% / 6);
     position: relative;
+    background-color: rgb(47, 38, 34);
 }
 .guitar .chord::before {
     content: '';
@@ -135,6 +136,7 @@ html, body {
     position: absolute;
     top: 50%;
     left: 0;
+    transform: translateY(-50%);
 }
 .guitar .chord:nth-of-type(1)::before { height: 2px; }
 .guitar .chord:nth-of-type(2)::before { height: 3px; }
@@ -150,10 +152,11 @@ html, body {
     border-left: 5px solid rgba(255, 255, 255, 0.3);
     height: 100%;
     display: inline-block;
-    background-color: rgb(47, 38, 34);
+    /* background-color: rgb(47, 38, 34); */
     transition: 0.3s;
     position: relative;
 }
+
 .guitar .chord .grid:nth-of-type(1) { width: 40px; background-color: rgba(255, 255, 255, 0.8); }
 .guitar .chord .grid:nth-of-type(2) { width: 150px; }
 .guitar .chord .grid:nth-of-type(3) { width: 150px; }
@@ -178,7 +181,16 @@ html, body {
 .guitar .chord .grid:nth-of-type(22) { width: 60px; }
 
 .guitar .chord .grid:hover {
-    opacity: 0.8;
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+.guitar .chord .grid span {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFF;
 }
 
 /* .guitar .chord .grid::before {
