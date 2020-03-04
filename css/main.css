@@ -195,6 +195,12 @@ html, body {
     color: #FFF;
 }
 
+.guitar .chord .grid span.note-3 { color: #FFB11B; }
+.guitar .chord .grid span.note-4 { color: #90B44B; }
+.guitar .chord .grid span.note-5 { color: #58B2DC; }
+.guitar .chord .grid span.note-6 { color: #005CAF; }
+.guitar .chord .grid span.note-7 { color: #A8497A; }
+
 /* .guitar .chord .grid::before {
     content: '';
     width: 30px;
