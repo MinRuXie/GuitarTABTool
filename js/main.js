@@ -16,12 +16,6 @@ $(function(){
         preloadImg(pics[i]);
     }
     
-    
-    // 等資源載入完成後才顯示畫面
-    // window.onload = function(){
-    //     $('.loading').hide();
-    // };
-
     // 載入動畫 1 秒
     setTimeout(function(){
         $('.loading').fadeOut();
@@ -123,8 +117,7 @@ $(function(){
             // 新增軌道至面板中
             $text_tabs.append(line_html);
         }
-
-        
+    
         let $line = $text_tabs.find('.line.selected');
         let $line_del_btn = $line.find('.del');
         
@@ -364,4 +357,18 @@ $(function(){
         });
     }
 
+    //---------------------------------------------
+    // 用浏览器内部转换器实现html解码
+    // 來源: https://www.cnblogs.com/xdp-gacl/p/3722642.html
+    //---------------------------------------------
+    function htmlDecode(text){
+        //1.首先动态创建一个容器标签元素，如DIV
+        var temp = document.createElement("div");
+        //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+        temp.innerHTML = text;
+        //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+        var output = temp.innerText || temp.textContent;
+        temp = null;
+        return output;
+    }
 });
