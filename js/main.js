@@ -115,7 +115,14 @@ $(function(){
             $text_tabs.append(line);
         }
     }
-    
+
+    //-------------------
+    // 刪除軌道
+    //-------------------
+    function delLine() {
+        
+    }
+
     //-------------------
     // 新增音符
     //-------------------
@@ -179,6 +186,19 @@ $(function(){
     // 行動裝置
     //-------------------
     if(isMobile.phone){
+        $('.line').each(function(index){
+            $('.grid').each(function(index2){
+                $(this).on('touchstart', function(event){
+                    let note_color = $(this).find('span').attr('class');
+                    let chord = $(this).attr('data-chord');
+                    let grid = $(this).attr('data-grid');
+                    
+                    // 產生 TAB
+                    addTABNote(note_color, chord, grid);
+                });
+            });
+        });
+
         $('.toolbutton').each(function(index){
             $(this).on('touchstart', function(event){
                 $(this).addClass('selected');
