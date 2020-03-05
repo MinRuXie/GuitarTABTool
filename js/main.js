@@ -64,7 +64,7 @@ $(function(){
     let $text_tabs = $text.find('.tabs-panel');
     let $toolbox = $('.toolbox');
     let $toolbox_btn = $('#toolbox-btn');
-
+    
     $('.toolbutton').eq(3).css('display', 'none'); // 開啟
 
     // 弦
@@ -76,7 +76,11 @@ $(function(){
     let grid_count = 22; // 空弦 + 21 格
 
     // 軌道
-    let line = `<div class="line"><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+    let line_html = `
+        <div class="line selected">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <div class="del">X</div>
+        </div>`
 
     // 建立琴弦 (6條)
     for (let i=0; i <= chord_count - 1; i++) {
@@ -108,19 +112,67 @@ $(function(){
     function addLine() {
         if($text_tabs.find('.line').length >= 1){
             // 檢查最後一行軌道有無音符
-            if($text_tabs.find('.line').last().children().length !== 0){
-                $text_tabs.append(line);
+            if($text_tabs.find('.line').last().children('.note').length !== 0){
+                // 刪除所有軌道焦點
+                $('.line').removeClass('selected');
+                
+                // 新增軌道至面板中
+                $text_tabs.append(line_html);
             }
         }else{
-            $text_tabs.append(line);
+            // 新增軌道至面板中
+            $text_tabs.append(line_html);
         }
+
+        
+        let $line = $text_tabs.find('.line.selected');
+        let $line_del_btn = $line.find('.del');
+        
+        // 裝上 刪除軌道事件
+        $line_del_btn.on('click', function(event){
+            // 刪除一行簡譜軌道
+            delLine($line);
+        });
     }
 
     //-------------------
     // 刪除軌道
     //-------------------
-    function delLine() {
-        
+    function delLine(line) {
+         // 檢查軌道數量
+         if($text_tabs.find('.line').length > 1) {
+            // 檢查軌道中是否有焦點
+            if (line.find('.selected').length != 0) {
+                let $prevLine = line.prev('.line');
+                let $nextLine = line.next('.line');
+
+                // 移除所有焦點
+                $text_tabs.find('.line').removeClass('selected');
+                $text_tabs.find('.note').removeClass('selected'); 
+                
+                // 移動焦點置上或下一軌道的最後一個音符 (如果有)
+                if ($prevLine.length != 0) {
+                    $prevLine.find('.note').last().addClass('selected');
+                    $prevLine.addClass('selected');
+                } else if ($nextLine.length != 0) {
+                    $nextLine.find('.note').last().addClass('selected');
+                    $nextLine.addClass('selected');
+                }
+            }
+
+            // 移除軌道
+            line.remove();
+        }else{
+            // 移除所有焦點
+            $text_tabs.find('.line').removeClass('selected');
+            $text_tabs.find('.note').removeClass('selected'); 
+            
+            // 刪除該軌道的音符
+            line.children().not('.del').not('span').remove();
+            
+            // 增加軌道焦點
+            line.addClass('selected');
+        }
     }
 
     //-------------------
@@ -128,10 +180,36 @@ $(function(){
     //-------------------
     function addTABNote(note_color, chord, grid) {
         let tab_note = `
-            <div class="note">
+            <div class="note selected">
                 <span class="${note_color} chord-${chord}">${grid}</span>
             </div>`;
-        $('.line').append(tab_note);
+        
+        // 刪除所有音符焦點
+        $('.note.selected').removeClass('selected');
+        
+        // 新增音符至焦點軌道
+        $('.line.selected').append(tab_note);
+    }
+
+    //-------------------
+    // 刪除音符
+    //-------------------
+    function delTABNote() {
+        // 目前焦點音符
+        let $focuseNote = $text_tabs.find(".note.selected");
+
+        // 將焦點移置前一個或後一個音符 (如果有)
+        let $prevNote = $focuseNote.prev('.note');
+        let $nextNote = $focuseNote.next('.note');
+        
+        if ($prevNote.length != 0) {
+            $prevNote.addClass('selected');
+        } else if ($nextNote.length != 0) {
+            $nextNote.addClass('selected');
+        }
+
+        // 移除目前焦點音符
+        $focuseNote.remove();
     }
     
     //-------------------
@@ -206,17 +284,17 @@ $(function(){
                 switch(index){
                     case 0: { // 刪除
                         // 刪除簡譜
-                        
+                        delTABNote();
                         break;
                     }
                     case 1: { // 空格
                         // 紀錄簡譜
-                        
+                        addTABNote('note-space', 0, '');
                         break;
                     }
                     case 2: { // 換行
                         // 新增簡譜軌道
-                        
+                        addLine();
                         break;
                     }
                     case 3: { // 開啟鋼琴
@@ -244,7 +322,7 @@ $(function(){
                     let chord = $(this).attr('data-chord');
                     let grid = $(this).attr('data-grid');
                     
-                    // 產生 TAB
+                    // 紀錄簡譜
                     addTABNote(note_color, chord, grid);
                 });
             });
@@ -257,17 +335,17 @@ $(function(){
                 switch(index){
                     case 0: { // 刪除
                         // 刪除簡譜
-                        
+                        delTABNote();
                         break;
                     }
                     case 1: { // 空格
                         // 紀錄簡譜
-                        
+                        addTABNote('note-space', 0, '');
                         break;
                     }
                     case 2: { // 換行
                         // 新增簡譜軌道
-                        
+                        addLine();
                         break;
                     }
                     case 3: { // 開啟鋼琴
