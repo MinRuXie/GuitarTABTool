@@ -76,7 +76,7 @@ $(function(){
     let grid_count = 22; // 空弦 + 21 格
 
     // 軌道
-    let line = `<div class="line"><span></span><span></span><span></span><span></span></div>`
+    let line = `<div class="line"><span></span><span></span><span></span><span></span><span></span><span></span></div>`
 
     // 建立琴弦 (6條)
     for (let i=0; i <= chord_count - 1; i++) {
@@ -122,7 +122,7 @@ $(function(){
     function addTABNote(note_color, chord, grid) {
         let tab_note = `
             <div class="tab-panel">
-                <span class="${note_color} ${chord} ${grid}">1</span>
+                <span class="${note_color} chord-${chord}">${grid}</span>
             </div>`;
         $('.line').append(tab_note);
     }
