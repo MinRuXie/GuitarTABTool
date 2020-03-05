@@ -121,7 +121,7 @@ $(function(){
     //-------------------
     function addTABNote(note_color, chord, grid) {
         let tab_note = `
-            <div class="tab-panel">
+            <div class="note">
                 <span class="${note_color} chord-${chord}">${grid}</span>
             </div>`;
         $('.line').append(tab_note);
@@ -225,11 +225,7 @@ $(function(){
                     let grid = $(this).attr('data-grid');
                     
                     // 產生 TAB
-                    // addTABNote(note_color, chord, grid);
-                    // addTABNote($(this).find('span').attr('class'), chord, grid);
-                    console.log();
-                    console.log();
-                    console.log();
+                    addTABNote(note_color, chord, grid);
                 });
             });
         });
