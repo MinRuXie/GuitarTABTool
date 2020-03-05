@@ -76,7 +76,7 @@ $(function(){
     let grid_count = 22; // 空弦 + 21 格
 
     // 軌道
-    let line = `<div class="line"></div>`
+    let line = `<div class="line"><span></span><span></span><span></span><span></span></div>`
 
     // 建立琴弦 (6條)
     for (let i=0; i <= chord_count - 1; i++) {
@@ -119,8 +119,14 @@ $(function(){
     //-------------------
     // 新增音符
     //-------------------
+    function addTABNote(note_color, chord, grid) {
+        let tab_note = `
+            <div class="tab-panel">
+                <span class="${note_color} ${chord} ${grid}">1</span>
+            </div>`;
+        $('.line').append(tab_note);
+    }
     
-
     //-------------------
     // 吉他面板控制
     //-------------------
@@ -214,7 +220,16 @@ $(function(){
         $('.line').each(function(index){
             $('.grid').each(function(index2){
                 $(this).on('mousedown', function(event){
-                    console.log('hi');
+                    let note_color = $(this).find('span').attr('class');
+                    let chord = $(this).attr('data-chord');
+                    let grid = $(this).attr('data-grid');
+                    
+                    // 產生 TAB
+                    // addTABNote(note_color, chord, grid);
+                    // addTABNote($(this).find('span').attr('class'), chord, grid);
+                    console.log();
+                    console.log();
+                    console.log();
                 });
             });
         });
