@@ -4,12 +4,20 @@ $color-note-5: #58B2DC;
 $color-note-6: #005CAF;
 $color-note-7: #A8497A;
 
-html,
-body {
+$color-brown: rgb(47, 38, 34);
+$color-light-brown: rgb(98, 85, 80);
+
+$color-light-black: rgb(50, 50, 50);
+$color-dark-black: #242424;
+$color-pure-black: #000;
+$color-light-gray: #999;
+$color-white: #FFF;
+
+html, body {
     margin: 0;
     height: 100%;
     overflow: hidden;
-    background-color: rgb(41, 41, 41);
+    background-color: $color-dark-black;
 }
 
 .container-fluid {
@@ -19,7 +27,7 @@ body {
 
 /* 譜區 */
 .text {
-    background: rgb(41, 41, 41);
+    background: $color-dark-black;
     height: 65%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -35,13 +43,13 @@ body {
 
     /* 軌道: TAB 譜線 */
     .line {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba($color-white, 0.1);
         width: 100%;
         height: 100px;
         position: relative;
 
         /* 焦點 */
-        &.selected { box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9); }
+        &.selected { box-shadow: 0px 0px 10px rgba($color-white, 0.9); }
 
         /* 背景 */
         &::before {
@@ -55,10 +63,10 @@ body {
             width: 20px;
             height: calc(100% / 7 * 5);
             text-align: center;
-            color: #FFF;
+            color: $color-white;
             font-weight: bold;
             word-wrap: break-word;
-            border-left: 5px solid #FFF;
+            border-left: 5px solid $color-white;
             padding-left: 7px;
         }
 
@@ -70,7 +78,7 @@ body {
             width: 100%;
             height: 1px;
             display: block;
-            background-color: #FFF;
+            background-color: $color-white;
             transform: translateY(-50%);
 
             &:nth-of-type(1) { top: calc(100% / 7 * 1); }
@@ -93,7 +101,7 @@ body {
             font-size: 12px;
             text-align: center;
             cursor: pointer;
-            background-color: #FFF;
+            background-color: $color-white;
             transition: 0.3s;
 
             &:hover {
@@ -116,7 +124,7 @@ body {
             /* 焦點 */
             &.selected { 
                 span {
-                    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.9);
+                    box-shadow: 0px 0px 10px rgba($color-white, 0.9);
                 }
             }
 
@@ -129,10 +137,10 @@ body {
                 width: 20px;
                 height: 20px;
                 border-radius: 100px;
-                color: #FFF;
+                color: $color-white;
                 
                 /* 音階 */
-                &.note-space { background-color: rgba(255, 255, 255, 0.1); }
+                &.note-space { background-color: rgba($color-white, 0.1); }
                 &.note-3 { background-color: $color-note-3; }
                 &.note-4 { background-color: $color-note-4; }
                 &.note-5 { background-color: $color-note-5; }
@@ -157,14 +165,14 @@ body {
         display: inline-block;
         padding: 5px;
         font-size: 15px;
-        color: #FFF;
+        color: $color-white;
         letter-spacing: 2px;
     }
 }
 
 /* 工具箱 */
 .toolbox {
-    background-color: rgb(50, 50, 50);
+    background-color: $color-light-black;
     height: 65%;
     width: 10%;
     float: left;
@@ -190,7 +198,7 @@ body {
         top: 50%;
         left: 0;
         color: rgba(255, 255, 255, 0.8);
-        background-color: rgba(50, 50, 50);
+        background-color: $color-light-black;
         width: 18px;
         height: 100%;
         transform: translateY(-50%);
@@ -218,7 +226,7 @@ body {
 
     .toolbutton {
         width: 100%;
-        border: 1px solid rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba($color-white, 0.6);
         color: #FFF;
         text-align: center;
         padding: 7px 5px;
@@ -230,11 +238,11 @@ body {
         transition: 0.3s;
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: rgba($color-white, 0.2);
         }
 
         &.selected {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba($color-white, 0.1);
         }
     }
 }
@@ -247,7 +255,7 @@ body {
     height: 35%;
     overflow-y: hidden;
     overflow-x: scroll;
-    background-color: #000;
+    background-color: $color-pure-black;
 
     /* 消除子元素 inlic-block 的上下間隔 */
     line-height: 0;
@@ -262,7 +270,7 @@ body {
 
         height: calc(100% / 6);
         position: relative;
-        background-color: rgb(47, 38, 34);
+        background-color: $color-brown;
 
         &::before {
             content: '';
@@ -281,11 +289,11 @@ body {
         &:nth-of-type(5)::before { height: 4px; }
         &:nth-of-type(6)::before { height: 5px; }
 
-        &.bass::before { background-color: #999; }
-        &.treble::before { background-color: rgba(98, 85, 80); }
+        &.bass::before { background-color: $color-light-gray; }
+        &.treble::before { background-color: $color-light-brown; }
 
         .grid + .grid {
-            border-left: 5px solid rgba(255, 255, 255, 0.3);
+            border-left: 5px solid rgba($color-white, 0.3);
         }
 
         .grid {
@@ -295,9 +303,9 @@ body {
             cursor: pointer;
             transition: 0.3s;
 
-            &:hover { background-color: rgb(255, 255, 255, 0.5); }
+            &:hover { background-color: rgb($color-white, 0.5); }
 
-            &:nth-of-type(1) { width: 40px; background-color: rgba(255, 255, 255, 0.3); }
+            &:nth-of-type(1) { width: 40px; background-color: rgba($color-white, 0.3); }
             &:nth-of-type(2),
             &:nth-of-type(3),
             &:nth-of-type(4) { width: 150px; }
@@ -340,6 +348,61 @@ body {
                 &.note-6 { color: $color-note-6; }
                 &.note-7 { color: $color-note-7; }
             }
+        }
+    }
+}
+
+/* 功能說明區塊 */
+.intro-wrap {
+    display: none;
+
+    &.active {
+        background-color: rgba($color-pure-black, 0.8);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+
+    /* 關閉按鈕 */
+    .ctr-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        color: $color-white;
+        border: 1px solid $color-white;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 6px 10px;
+        transition: 0.3s;
+
+        &:hover {
+            background-color: rgba($color-white, 0.3);
+        }
+    }
+
+    .intro-content {
+        color: $color-white;
+        border: 1px solid $color-white;
+        border-radius: 10px;
+        padding: 30px 50px;
+        position: relative;
+
+        @media screen and (max-width: 1024px) {
+            border: none;
+            padding: 10px 20px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: scroll;
+        }
+
+        h4, li {
+            line-height: 2;
         }
     }
 }

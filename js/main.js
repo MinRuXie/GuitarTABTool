@@ -58,7 +58,9 @@ $(function(){
     let $text_tabs = $text.find('.tabs-panel');
     let $toolbox = $('.toolbox');
     let $toolbox_btn = $('#toolbox-btn');
-    
+    let $intro = $('.intro-wrap');
+    let $intro_closed_btn = $('.intro-wrap .ctr-btn');
+
     $('.toolbutton').eq(3).css('display', 'none'); // 開啟
 
     // 弦
@@ -254,6 +256,14 @@ $(function(){
     });
 
     //-------------------
+    // 關閉功能說明
+    //-------------------
+    $intro_closed_btn.on('click', function(event) {
+        $intro.removeClass('active');
+        $('.toolbutton').eq(6).removeClass('selected');
+    });
+
+    //-------------------
     // 行動裝置
     //-------------------
     if(isMobile.phone){
@@ -296,6 +306,10 @@ $(function(){
                     }
                     case 4: { // 關閉鋼琴
                         controlPianoLayout('close');
+                        break;
+                    }
+                    case 5: { // 開啟 功能說明
+                        $intro.addClass('active');
                         break;
                     }
                 }
@@ -347,6 +361,10 @@ $(function(){
                     }
                     case 4: { // 關閉鋼琴
                         controlPianoLayout('close');
+                        break;
+                    }
+                    case 5: { // 開啟 功能說明
+                        $intro.addClass('active');
                         break;
                     }
                 }
