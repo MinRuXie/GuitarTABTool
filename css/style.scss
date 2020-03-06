@@ -298,26 +298,32 @@ body {
             &:hover { background-color: rgb(255, 255, 255, 0.5); }
 
             &:nth-of-type(1) { width: 40px; background-color: rgba(255, 255, 255, 0.3); }
-            &:nth-of-type(2) { width: 150px; }
-            &:nth-of-type(3) { width: 150px; }
+            &:nth-of-type(2),
+            &:nth-of-type(3),
             &:nth-of-type(4) { width: 150px; }
-            &:nth-of-type(5) { width: 130px; }
-            &:nth-of-type(6) { width: 130px; }
+            
+            &:nth-of-type(5),
+            &:nth-of-type(6),
             &:nth-of-type(7) { width: 130px; }
-            &:nth-of-type(8) { width: 110px; }
-            &:nth-of-type(9) { width: 110px; }
+
+            &:nth-of-type(8),
+            &:nth-of-type(9),
             &:nth-of-type(10) { width: 110px; }
-            &:nth-of-type(11) { width: 90px; }
-            &:nth-of-type(12) { width: 90px; }
+
+            &:nth-of-type(11),
+            &:nth-of-type(12),
             &:nth-of-type(13) { width: 90px; }
-            &:nth-of-type(14) { width: 80px; }
-            &:nth-of-type(15) { width: 80px; }
+
+            &:nth-of-type(14),
+            &:nth-of-type(15),
             &:nth-of-type(16) { width: 80px; }
-            &:nth-of-type(17) { width: 70px; }
-            &:nth-of-type(18) { width: 70px; }
+
+            &:nth-of-type(17),
+            &:nth-of-type(18),
             &:nth-of-type(19) { width: 70px; }
-            &:nth-of-type(20) { width: 60px; }
-            &:nth-of-type(21) { width: 60px; }
+
+            &:nth-of-type(20),
+            &:nth-of-type(21),
             &:nth-of-type(22) { width: 60px; }
 
             span {
