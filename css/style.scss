@@ -47,6 +47,7 @@ html, body {
         width: 100%;
         height: 100px;
         position: relative;
+        margin-bottom: 10px;
 
         /* 焦點 */
         &.selected { box-shadow: 0px 0px 10px rgba($color-white, 0.9); }
@@ -250,20 +251,32 @@ html, body {
 /* 琴頸 */
 .guitar {
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 100%;
     height: 35%;
-    overflow-y: hidden;
-    overflow-x: scroll;
+    overflow: hidden;
     background-color: $color-pure-black;
 
     /* 消除子元素 inlic-block 的上下間隔 */
     line-height: 0;
 
+    &::before {
+        content: '';
+        display: block;
+        width: calc(100% / 6);
+        height: 100%;
+        border-radius: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        right: calc(-3.5% * 3 + 8px);
+        z-index: 1;
+    }
+
     .chord {
-        /* 依照內容決定寬度 */
-        width: auto; 
-        display: inline-block;
+        width: 100%;
+        display: flex;
 
         /* 子元素不換行 */
         white-space: nowrap;
@@ -297,45 +310,46 @@ html, body {
         }
 
         .grid {
+            width: 100%;
             height: 100%;
-            display: inline-block;
             position: relative;
             cursor: pointer;
             transition: 0.3s;
 
             &:hover { background-color: rgb($color-white, 0.5); }
 
-            &:nth-of-type(1) { width: 40px; background-color: rgba($color-white, 0.3); }
+            &:nth-of-type(1) { width: 2.5%; border-right: 5px solid rgba($color-white, 0.3); }/*2.5*/
             &:nth-of-type(2),
             &:nth-of-type(3),
-            &:nth-of-type(4) { width: 150px; }
+            &:nth-of-type(4) { width: 5.5%; }/*16.5*/
             
             &:nth-of-type(5),
             &:nth-of-type(6),
-            &:nth-of-type(7) { width: 130px; }
+            &:nth-of-type(7) { width: 5.5%; }/*16.5*/
 
             &:nth-of-type(8),
             &:nth-of-type(9),
-            &:nth-of-type(10) { width: 110px; }
+            &:nth-of-type(10) { width: 5%; }/*15*/
 
             &:nth-of-type(11),
             &:nth-of-type(12),
-            &:nth-of-type(13) { width: 90px; }
+            &:nth-of-type(13) { width: 4.5%; }/*13.5*/
 
             &:nth-of-type(14),
             &:nth-of-type(15),
-            &:nth-of-type(16) { width: 80px; }
+            &:nth-of-type(16) { width: 4.5%; }/*13.5*/
 
             &:nth-of-type(17),
             &:nth-of-type(18),
-            &:nth-of-type(19) { width: 70px; }
+            &:nth-of-type(19) { width: 4%; }/*12*/
 
             &:nth-of-type(20),
             &:nth-of-type(21),
-            &:nth-of-type(22) { width: 60px; }
+            &:nth-of-type(22) { width: 3.5%; }/*10.5*/
 
             span {
-                display: inline-block;
+                font-size: 14px;
+                text-shadow: 0px 0px 5px #000;
                 position: absolute;
                 top: 50%;
                 left: 50%;

@@ -33,6 +33,7 @@ html, body {
   width: 100%;
   height: 100px;
   position: relative;
+  margin-bottom: 10px;
   /* 焦點 */
   /* 背景 */
   /* 背景線 */
@@ -249,19 +250,30 @@ html, body {
 /* 琴頸 */
 .guitar {
   position: absolute;
+  left: 0;
   bottom: 0;
   width: 100%;
   height: 35%;
-  overflow-y: hidden;
-  overflow-x: scroll;
+  overflow: hidden;
   background-color: #000;
   /* 消除子元素 inlic-block 的上下間隔 */
   line-height: 0;
 }
+.guitar::before {
+  content: "";
+  display: block;
+  width: calc(100% / 6);
+  height: 100%;
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  right: calc(-3.5% * 3 + 8px);
+  z-index: 1;
+}
 .guitar .chord {
-  /* 依照內容決定寬度 */
-  width: auto;
-  display: inline-block;
+  width: 100%;
+  display: flex;
   /* 子元素不換行 */
   white-space: nowrap;
   height: calc(100% / 6);
@@ -305,42 +317,51 @@ html, body {
   border-left: 5px solid rgba(255, 255, 255, 0.3);
 }
 .guitar .chord .grid {
+  width: 100%;
   height: 100%;
-  display: inline-block;
   position: relative;
   cursor: pointer;
   transition: 0.3s;
+  /*2.5*/
+  /*16.5*/
+  /*16.5*/
+  /*15*/
+  /*13.5*/
+  /*13.5*/
+  /*12*/
+  /*10.5*/
 }
 .guitar .chord .grid:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
 .guitar .chord .grid:nth-of-type(1) {
-  width: 40px;
-  background-color: rgba(255, 255, 255, 0.3);
+  width: 2.5%;
+  border-right: 5px solid rgba(255, 255, 255, 0.3);
 }
 .guitar .chord .grid:nth-of-type(2), .guitar .chord .grid:nth-of-type(3), .guitar .chord .grid:nth-of-type(4) {
-  width: 150px;
+  width: 5.5%;
 }
 .guitar .chord .grid:nth-of-type(5), .guitar .chord .grid:nth-of-type(6), .guitar .chord .grid:nth-of-type(7) {
-  width: 130px;
+  width: 5.5%;
 }
 .guitar .chord .grid:nth-of-type(8), .guitar .chord .grid:nth-of-type(9), .guitar .chord .grid:nth-of-type(10) {
-  width: 110px;
+  width: 5%;
 }
 .guitar .chord .grid:nth-of-type(11), .guitar .chord .grid:nth-of-type(12), .guitar .chord .grid:nth-of-type(13) {
-  width: 90px;
+  width: 4.5%;
 }
 .guitar .chord .grid:nth-of-type(14), .guitar .chord .grid:nth-of-type(15), .guitar .chord .grid:nth-of-type(16) {
-  width: 80px;
+  width: 4.5%;
 }
 .guitar .chord .grid:nth-of-type(17), .guitar .chord .grid:nth-of-type(18), .guitar .chord .grid:nth-of-type(19) {
-  width: 70px;
+  width: 4%;
 }
 .guitar .chord .grid:nth-of-type(20), .guitar .chord .grid:nth-of-type(21), .guitar .chord .grid:nth-of-type(22) {
-  width: 60px;
+  width: 3.5%;
 }
 .guitar .chord .grid span {
-  display: inline-block;
+  font-size: 14px;
+  text-shadow: 0px 0px 5px #000;
   position: absolute;
   top: 50%;
   left: 50%;

@@ -19,4 +19,4 @@
 * jQuery
 * Javascript
 * HTML
-* CSS
+* SCSS
