@@ -139,7 +139,6 @@ $(function(){
                     $nextLine.addClass('selected');
                 }
 
-                console.log('hello');
             // }            
 
             // 移除軌道
