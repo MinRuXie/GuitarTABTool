@@ -122,7 +122,7 @@ $(function(){
          // 檢查軌道數量
          if($text_tabs.find('.line').length > 1) {
             // 檢查軌道中是否有焦點
-            if (line.find('.selected').length != 0) {
+            // if (line.find('.selected').length != 0) {
                 let $prevLine = line.prev('.line');
                 let $nextLine = line.next('.line');
 
@@ -138,11 +138,13 @@ $(function(){
                     $nextLine.find('.note').last().addClass('selected');
                     $nextLine.addClass('selected');
                 }
-            }
+
+                console.log('hello');
+            // }            
 
             // 移除軌道
             line.remove();
-        }else{
+        } else {
             // 移除所有焦點
             $text_tabs.find('.line').removeClass('selected');
             $text_tabs.find('.note').removeClass('selected'); 
